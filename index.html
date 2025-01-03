@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIONCHECK</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+       
+        .top-header h2 {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 20px;
+            width: 25px;
+             position: relative;
+             z-index: 2;
+        }
+       
+        .menu-icon span {
+            background-color: white;
+            height: 3px;
+            width: 100%;
+            transition: 0.3s;
+        }
+       
+         .dropdown-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 10;
+            box-sizing: border-box;
+            opacity: 0; 
+            transform: translateY(-20px); 
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+            opacity: 1; 
+             transform: translateY(0);
+             animation: slideDown 0.3s ease forwards;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+            }
+            to {
+              transform: translateY(0);
+          }
+        }
+
+        .menu-item {
+            padding: 15px;
+            border: 1px solid white;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item a{
+            text-decoration: none;
+            color: white;
+        }
+
+       .container {
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            position: relative;
+        }
+        
+        .container::before{
+             content: '';
+             position: absolute;
+             top: -20px;
+             right: -8px;
+             width: 60px;
+             height: 60px;
+             background-image: url('https://0x0.st/s/3pQxKGFH2Zmxn3rQiHVjsw/8zhW.png');
+             background-size: contain;
+             background-repeat: no-repeat;
+             transform: rotate(10deg);
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+           display: flex;
+           justify-content: center;
+           margin-bottom: 20px;
+           width: 100%;
+           animation: slideDownImage 1s ease forwards;
+        }
+          @keyframes slideDownImage {
+             from {
+                 transform: translateY(-100px);
+                 opacity: 0;
+             }
+              to {
+                  transform: translateY(0);
+                  opacity: 1;
+              }
+            }
+
+img {
+    border-radius: 20px;
+    max-width: 350px;
+    height: auto;
+}
+
+.header-line {
+    border-top: 1px solid white;
+    margin: 10px 0;
+}
+
+.content {
+    padding-top: 10px;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="top-header">
+<h2>ARION</h2>
+<div class="menu-icon" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</div>
+
+<div class="dropdown-menu" id="dropdownMenu">
+<div class="menu-item">
+    <a href="index.html">Биография</a>
+</div>
+<div class="menu-item">
+    <a href="modules.html">Модули</a>
+</div>
+</div>
+
+<div class="container">
+ <div class="image-container">
+    <img src="https://0x0.st/s/JIz47A3nfvx08mBojM8I9Q/8zyH.png" alt="Image">
+</div>
+<h1>ARION</h1>
+
+<div class="container">
+    <div class="content">information about me:</div>
+    <div class="header-line"></div>
+    <div class="content">Nickname: Arion,Arioncheck</div>
+    <div class="content">Hobbie: Coding</div>
+    <div class="content">Country: Russia Federation</div>
+</div>
+
+<div class="container">
+    <div class="content">Active in these chats:</div>
+    <div class="header-line"></div>
+    <div class="content">🍇 GrapeCrack | Chat 🍇</div>
+    <div class="content">Hikka -offtop-chat</div>
+</div>
+
+<div class="container">
+    <div class="content">Userbot:</div>
+    <div class="header-line"></div>
+    <div class="content">This is the hikka, host of the aeza userbot</div>
+</div>
+</div>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
