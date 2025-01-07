@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ARIONCHECK</title>
+    <style>
+        body {
+            background-color: black; 
+            color: white;
+            font-family: monospace;
+            margin: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           
+        }
+
+        #background-image {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -10; 
+            object-fit: cover;
+            filter: blur(5px);
+        }
+
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgb(123, 100, 255, 0.664);
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 700px;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+        }
+
+        .top-header h2 {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 20px;
+            width: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .menu-icon span {
+            background-color: white;
+            height: 3px;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .dropdown-container { 
+            position: absolute;
+            top: 74px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 700px;
+            z-index: 10;
+        }
+
+        .dropdown-menu {
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+             padding: 20px;
+             display: none;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(123, 100, 255, 0.664);
+            align-self: center;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(10px);
+            transform: translateY(-20px);
+             transition: opacity 0.3s ease, transform 0.3s ease;
+           
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            padding: 15px;
+            border: 1px solid white;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(123, 100, 255, 0.664);
+        }
+
+        .menu-item:hover {
+            background-color: rgba(123, 100, 255, 0.664);
+        }
+
+         .menu-item a{
+            text-decoration: none;
+            color: white;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+       .container {
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(123, 100, 255, 0.664);
+            position: relative;
+            width: 90%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+        }
+
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+           justify-content: center;
+           margin-bottom: 20px;
+           width: 100%;
+           padding: 20px;
+           border-radius: 15px;
+           position: relative;
+           max-width: 250px;
+           align-self: center;
+           align-items: center;
+           display: block; 
+           margin: 0 auto;
+        }
+
+        img {
+            border-radius: 20px;
+            max-width: 250px;
+            height: auto;
+            display: block; 
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(123, 100, 255, 0.664);
+        }
+
+        .header-line {
+            border-top: 1px solid rgba(123, 100, 255, 0.664);
+            margin: 10px 0;
+        }
+
+        .content {
+            padding-top: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <img id="background-image" src="https://0x0.st/s/joBO8YlqLY-EKQsopPZ1XQ/8idZ.png" alt="Background Image">
+
+<div class="top-header">
+<h2>ARION</h2>
+<div class="menu-icon" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+</div>
+    
+<div class="dropdown-container" >
+    <div class="dropdown-menu" id="dropdownMenu">
+        <div class="menu-item">
+            <a href="index.html">Биография</a>
+        </div>
+        <div class="menu-item">
+            <a href="modules.html">Модули</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+ <div class="image-container">
+    <img src="https://0x0.st/s/JIz47A3nfvx08mBojM8I9Q/8zyH.png" alt="Image">
+</div>
+<h1>ARION</h1>
+
+<div class="container">
+    <div class="content">information about me:</div>
+    <div class="header-line"></div>
+    <div class="content">Nickname: Arion,Arioncheck</div>
+    <div class="content">Hobbie: Coding</div>
+    <div class="content">Country: Russia Federation</div>
+</div>
+
+<div class="container">
+    <div class="content">Active in these chats:</div>
+    <div class="header-line"></div>
+    <div class="content">🍇 GrapeCrack | Chat 🍇</div>
+    <div class="content">Hikka -offtop-chat</div>
+</div>
+
+<div class="container">
+    <div class="content">Userbot:</div>
+    <div class="header-line"></div>
+    <div class="content">This is the hikka, host of the aeza userbot</div>
+</div>
+</div>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
