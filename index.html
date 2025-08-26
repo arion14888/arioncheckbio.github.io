@@ -6,60 +6,64 @@
     <title>Arioncheck Bio</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        
         body {
             font-family: 'VT323', monospace;
-            margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
-            background-image: url("https://i.ibb.co/1YyZcJzG/IMG-0001.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: #1a1a1a;
             position: relative;
+            box-sizing: border-box;
         }
         
         body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("https://i.ibb.co/1YyZcJzG/IMG-0001.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            z-index: -2;
+            bottom: -200px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(216, 191, 216, 0.5) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            filter: blur(40px);
         }
         
         body::after {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(216, 191, 216, 0.5) 0%, rgba(0,0,0,0) 70%);
             z-index: -1;
+            filter: blur(40px);
         }
 
         .container {
             width: 100%;
             max-width: 600px;
+            margin: 0;
         }
 
         .card {
             border-radius: 3px;
             padding: 20px;
             backdrop-filter: blur(10px);
-            background-color: rgba(255,255,255,0.05);
-            border: 1px solid #666;
+            background-color: rgba(40, 40, 40, 0.7);
+            border: 1px solid #444;
             box-shadow: 0 0 12px 0 rgba(0,0,0,0.5);
+            box-sizing: border-box;
         }
 
         .avatar-container {
@@ -184,73 +188,9 @@
             max-height: 56px;
             border-radius: 3px;
         }
-
-        #preloader {
-            position: fixed;
-            z-index: 9999;
-            inset: 0;
-            background: #18191a;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s;
-            font-family: 'VT323', monospace;
-        }
-        #preloader .spinner {
-            width: 48px;
-            height: 48px;
-            border: 6px solid #fff;
-            border-top: 6px solid #888;
-            border-radius: 3px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 24px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        #preloader .loading-text {
-            font-size: 1.8em;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-        #preloader .dots {
-            display: inline-block;
-            width: auto;
-            text-align: left;
-            margin-left: 6px;
-        }
-        #preloader .dot {
-            opacity: 0.2;
-            animation: dotBlink 1.2s infinite;
-            font-size: 1.8em;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        #preloader .dot:nth-child(1) { animation-delay: 0s; }
-        #preloader .dot:nth-child(2) { animation-delay: 0.3s; }
-        #preloader .dot:nth-child(3) { animation-delay: 0.6s; }
-        @keyframes dotBlink {
-            0%, 80%, 100% { opacity: 0.2; }
-            40% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
-    <div id="preloader">
-        <div class="spinner"></div>
-        <div class="loading-text">
-            Loading
-            <span class="dots">
-                <span class="dot">.</span>
-                <span class="dot">.</span>
-                <span class="dot">.</span>
-            </span>
-        </div>
-    </div>
-
     <div class="container">
         <main>
             <div class="card">
@@ -302,18 +242,6 @@
     </div>
 
     <script>
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        });
-
-        document.addEventListener('click', function(event) {
-            const telegramBtn = document.getElementById('telegramBtn');
-        });
-
         document.getElementById('telegramBtn').addEventListener('click', function(event) {
             event.stopPropagation();
             
@@ -322,6 +250,5 @@
             }, 100);
         });
     </script>
-
 </body>
 </html>
